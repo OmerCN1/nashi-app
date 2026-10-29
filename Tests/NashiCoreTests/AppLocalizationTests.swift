@@ -2,6 +2,14 @@ import XCTest
 @testable import NashiCore
 
 final class AppLocalizationTests:XCTestCase {
+    func testWheelSettingsCopyIsTranslated() {
+        for source in ["Wheels","Only what you need.","Hide what you never use. The wheels share the space among the rest.","Click an item to hide or show it.","Preview with","At least one action stays visible.","Show all"] {
+            XCTAssertNotEqual(AppLocalization.text(source,language:"tr"),source,source)
+            XCTAssertNotEqual(AppLocalization.text(source,language:"fr"),source,source)
+        }
+        XCTAssertEqual(AppLocalization.text("4 of 6 visible",language:"tr"),"6 öğeden 4 tanesi görünüyor")
+        XCTAssertEqual(AppLocalization.text("4 of 6 visible",language:"fr"),"4 sur 6 visibles")
+    }
     func testEveryToolAndWindowPlacementHasTurkishCopy() {
         for source in Array(FeatureCatalog.toolNames.values)+ToolKind.allCases.map(\.title)+WindowPlacement.allCases.map(\.title) {
             XCTAssertNotEqual(AppLocalization.text(source,language:"tr"),source,source)

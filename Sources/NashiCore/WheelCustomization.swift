@@ -1,7 +1,7 @@
 import Foundation
 
 /// A stand-in drag payload for the Settings wheel preview; the paths never exist on disk.
-public struct WheelSample:Identifiable,Equatable,Sendable {
+public struct WheelSample:Identifiable,Hashable,Sendable {
     public let id:String
     public let extensions:[String]
     public var title:String { let name=extensions[0]=="gz" ? "GZIP":extensions[0].uppercased();return extensions.count>1 ? "\(extensions.count) × \(name)":name }
