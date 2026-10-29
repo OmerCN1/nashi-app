@@ -1090,6 +1090,7 @@
 "LITTLE TWEAKS.\nBIG DIFFERENCE." = "DE PETITES RETOUCHES.\nUNE GRANDE DIFFÉRENCE.";
 "LITTLE TWEAKS. A WHOLE NEW LOOK." = "DE PETITES RETOUCHES. UN TOUT NOUVEAU LOOK.";
 "LOCAL BY DESIGN" = "LOCAL PAR CONCEPTION";
+"LOCALSEND IS NOT INSTALLED, OR ITS SHARE EXTENSION IS TURNED OFF." = "LOCALSEND N’EST PAS INSTALLÉ, OU SON EXTENSION DE PARTAGE EST DÉSACTIVÉE.";
 "LOOKING FOR LITTLE SQUARES…" = "À LA RECHERCHE DE PETITS CARRÉS…";
 "LOUDNESS RANGE" = "PLAGE DE VOLUME SONORE";
 "Landscape" = "Paysage";
@@ -1121,6 +1122,7 @@
 "Local by design" = "Local par conception";
 "Local by design · MIT source\nVersion %@" = "Local par conception · Source MIT\nVersion %@";
 "Local by design · MIT source\nVersion %lld" = "Local par conception · Source MIT\nVersion %lld";
+"LocalSend is not installed, or its share extension is turned off." = "LocalSend n’est pas installé, ou son extension de partage est désactivée.";
 "Looking for little squares…" = "À la recherche de petits carrés…";
 "Loudness range" = "Plage de volume sonore";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "L’OPTION RÉDUIRE LES ANIMATIONS DE MACOS EST ACTIVÉE. NASHI DÉSACTIVE LES ANIMATIONS.";
@@ -1677,6 +1679,7 @@
 "SELECT PHOTOS" = "SÉLECTIONNER DES PHOTOS";
 "SELECTED FOLDER" = "DOSSIER SÉLECTIONNÉ";
 "SEND IT ON ITS WAY" = "DÉPLACEZ, COPIEZ, PARTAGEZ";
+"SENT TO LOCALSEND." = "ENVOYÉ À LOCALSEND.";
 "SERIF" = "EMPATTEMENT";
 "SET" = "DÉFINIR";
 "SET UP MEDIA TOOLS" = "CONFIGURER LES OUTILS MULTIMÉDIAS";
@@ -1814,6 +1817,7 @@
 "Selected duration: %lld" = "Durée sélectionnée : %lld";
 "Selected folder" = "Dossier sélectionné";
 "Send it on its way" = "Déplacez, copiez, partagez";
+"Sent to LocalSend." = "Envoyé à LocalSend.";
 "Serif" = "Empattement";
 "Set" = "Définir";
 "Set up Nashi tools" = "Configurer les outils de Nashi";

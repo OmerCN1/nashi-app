@@ -1101,6 +1101,8 @@
   "{0} QR codes found.": "{0} QR kodu bulundu.",
   "Files copied. Paste them wherever you need.": "Dosyalar kopyalandı. İstediğin yere yapıştır.",
   "File paths copied.": "Dosya yolları kopyalandı.",
+  "Sent to LocalSend.": "LocalSend’e gönderildi.",
+  "LocalSend is not installed, or its share extension is turned off.": "LocalSend yüklü değil veya paylaşım uzantısı kapalı.",
   "Remove from selection": "Seçimden kaldır",
   "Space: preview · Enter: use in Nashi": "Boşluk: önizle · Enter: Nashi'de kullan",
   "Choose files for Nashi": "Nashi için dosya seç",

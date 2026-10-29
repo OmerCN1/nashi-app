@@ -1090,6 +1090,7 @@
 "LITTLE TWEAKS.\nBIG DIFFERENCE." = "KÜÇÜK DOKUNUŞLAR.\nBÜYÜK FARK.";
 "LITTLE TWEAKS. A WHOLE NEW LOOK." = "KÜÇÜK DOKUNUŞLAR. YEPYENİ BİR GÖRÜNÜM.";
 "LOCAL BY DESIGN" = "VERİLERİN CİHAZINDA KALIR";
+"LOCALSEND IS NOT INSTALLED, OR ITS SHARE EXTENSION IS TURNED OFF." = "LOCALSEND YÜKLÜ DEĞİL VEYA PAYLAŞIM UZANTISI KAPALI.";
 "LOOKING FOR LITTLE SQUARES…" = "QR KODLARI ARANIYOR…";
 "LOUDNESS RANGE" = "SES DÜZEYİ ARALIĞI";
 "Landscape" = "Yatay";
@@ -1121,6 +1122,7 @@
 "Local by design" = "Verilerin cihazında kalır";
 "Local by design · MIT source\nVersion %@" = "Verilerin cihazında kalır · MIT lisanslı kaynak kodu\nSürüm %@";
 "Local by design · MIT source\nVersion %lld" = "Verilerin cihazında kalır · MIT lisanslı kaynak kodu\nSürüm %lld";
+"LocalSend is not installed, or its share extension is turned off." = "LocalSend yüklü değil veya paylaşım uzantısı kapalı.";
 "Looking for little squares…" = "QR kodları aranıyor…";
 "Loudness range" = "Ses düzeyi aralığı";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "MACOS HAREKETİ AZALT AÇIK. NASHI ANİMASYONLARI KAPALI TUTAR.";
@@ -1677,6 +1679,7 @@
 "SELECT PHOTOS" = "FOTOĞRAFLARI SEÇ";
 "SELECTED FOLDER" = "SEÇİLİ KLASÖRE";
 "SEND IT ON ITS WAY" = "TAŞI, KOPYALA, PAYLAŞ";
+"SENT TO LOCALSEND." = "LOCALSEND’E GÖNDERİLDİ.";
 "SERIF" = "SERİF";
 "SET" = "AYARLA";
 "SET UP MEDIA TOOLS" = "MEDYA ARAÇLARINI KUR";
@@ -1814,6 +1817,7 @@
 "Selected duration: %lld" = "Seçili süre: %lld";
 "Selected folder" = "Seçili klasöre";
 "Send it on its way" = "Taşı, kopyala, paylaş";
+"Sent to LocalSend." = "LocalSend’e gönderildi.";
 "Serif" = "Serif";
 "Set" = "Ayarla";
 "Set up Nashi tools" = "Nashi araçlarını kur";

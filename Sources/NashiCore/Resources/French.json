@@ -1101,6 +1101,8 @@
   "{0} QR codes found.": "{0} codes QR trouvés.",
   "Files copied. Paste them wherever you need.": "Fichiers copiés. Collez-les où vous voulez.",
   "File paths copied.": "Chemins des fichiers copiés.",
+  "Sent to LocalSend.": "Envoyé à LocalSend.",
+  "LocalSend is not installed, or its share extension is turned off.": "LocalSend n’est pas installé, ou son extension de partage est désactivée.",
   "Remove from selection": "Retirer de la sélection",
   "Space: preview · Enter: use in Nashi": "Espace : aperçu · Entrée : utiliser dans Nashi",
   "Choose files for Nashi": "Choisir des fichiers pour Nashi",

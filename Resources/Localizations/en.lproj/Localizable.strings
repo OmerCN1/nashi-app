@@ -1090,6 +1090,7 @@
 "LITTLE TWEAKS.\nBIG DIFFERENCE." = "LITTLE TWEAKS.\nBIG DIFFERENCE.";
 "LITTLE TWEAKS. A WHOLE NEW LOOK." = "LITTLE TWEAKS. A WHOLE NEW LOOK.";
 "LOCAL BY DESIGN" = "LOCAL BY DESIGN";
+"LOCALSEND IS NOT INSTALLED, OR ITS SHARE EXTENSION IS TURNED OFF." = "LOCALSEND IS NOT INSTALLED, OR ITS SHARE EXTENSION IS TURNED OFF.";
 "LOOKING FOR LITTLE SQUARES…" = "LOOKING FOR LITTLE SQUARES…";
 "LOUDNESS RANGE" = "LOUDNESS RANGE";
 "Landscape" = "Landscape";
@@ -1121,6 +1122,7 @@
 "Local by design" = "Local by design";
 "Local by design · MIT source\nVersion %@" = "Local by design · MIT source\nVersion %@";
 "Local by design · MIT source\nVersion %lld" = "Local by design · MIT source\nVersion %lld";
+"LocalSend is not installed, or its share extension is turned off." = "LocalSend is not installed, or its share extension is turned off.";
 "Looking for little squares…" = "Looking for little squares…";
 "Loudness range" = "Loudness range";
 "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF." = "MACOS REDUCE MOTION IS ON. NASHI KEEPS MOTION OFF.";
@@ -1677,6 +1679,7 @@
 "SELECT PHOTOS" = "SELECT PHOTOS";
 "SELECTED FOLDER" = "SELECTED FOLDER";
 "SEND IT ON ITS WAY" = "SEND IT ON ITS WAY";
+"SENT TO LOCALSEND." = "SENT TO LOCALSEND.";
 "SERIF" = "SERIF";
 "SET" = "SET";
 "SET UP MEDIA TOOLS" = "SET UP MEDIA TOOLS";
@@ -1814,6 +1817,7 @@
 "Selected duration: %lld" = "Selected duration: %lld";
 "Selected folder" = "Selected folder";
 "Send it on its way" = "Send it on its way";
+"Sent to LocalSend." = "Sent to LocalSend.";
 "Serif" = "Serif";
 "Set" = "Set";
 "Set up Nashi tools" = "Set up Nashi tools";

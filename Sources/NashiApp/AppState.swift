@@ -133,6 +133,10 @@ struct JobRecord:Codable,Identifiable {
         case .airDrop:
             if let service=NSSharingService(named:.sendViaAirDrop),service.canPerform(withItems:urls) { sharingService=service;service.delegate=self;service.perform(withItems:urls) }
             else { error="AirDrop is unavailable on this Mac." }
+        case .localSend:
+            // LocalSend ships a share extension; it has no named service, so match it by title.
+            if let service=NSSharingService.sharingServices(forItems:urls).first(where:{$0.title=="LocalSend"}),service.canPerform(withItems:urls) { sharingService=service;service.delegate=self;service.perform(withItems:urls) }
+            else { error="LocalSend is not installed, or its share extension is turned off." }
         case .move:
             let panel=NSOpenPanel();panel.canChooseFiles=false;panel.canChooseDirectories=true;panel.canCreateDirectories=true;panel.prompt="Move Here"
             NSApp.activate(ignoringOtherApps:true)
@@ -189,7 +193,10 @@ private func withGrantedFolderAccess<T>(_ urls:[URL],_ action:() throws -> T) th
 extension AppState:NSSharingServiceDelegate {
     nonisolated func sharingService(_ sharingService:NSSharingService,didShareItems items:[Any]) {
         let files=items.compactMap{$0 as? URL}
-        Task { @MainActor [weak self] in self?.sharingService=nil;self?.reportSuccess(.action("Shared with AirDrop.",files:files)) }
+        Task { @MainActor [weak self] in
+            let message=self?.sharingService?.title=="LocalSend" ? "Sent to LocalSend.":"Shared with AirDrop."
+            self?.sharingService=nil;self?.reportSuccess(.action(message,files:files))
+        }
     }
     nonisolated func sharingService(_ sharingService:NSSharingService,didFailToShareItems items:[Any],error:Error) {
         let description=(error as NSError).code == NSUserCancelledError ? nil:error.localizedDescription
@@ -198,7 +205,7 @@ extension AppState:NSSharingServiceDelegate {
 }
 
 enum FileAction:String,CaseIterable {
-    case airDrop,float,copy,move,copyPath,terminal
-    var title:String { switch self { case .airDrop:return "AirDrop";case .float:return "Float";case .copy:return "Copy";case .move:return "Move";case .copyPath:return "Copy Path";case .terminal:return "Terminal" } }
-    var symbol:String { switch self { case .airDrop:return "dot.radiowaves.left.and.right";case .float:return "rectangle.on.rectangle";case .copy:return "doc.on.doc";case .move:return "folder";case .copyPath:return "link";case .terminal:return "terminal" } }
+    case airDrop,localSend,float,copy,move,copyPath,terminal
+    var title:String { switch self { case .airDrop:return "AirDrop";case .localSend:return "LocalSend";case .float:return "Float";case .copy:return "Copy";case .move:return "Move";case .copyPath:return "Copy Path";case .terminal:return "Terminal" } }
+    var symbol:String { switch self { case .airDrop:return "dot.radiowaves.left.and.right";case .localSend:return "paperplane";case .float:return "rectangle.on.rectangle";case .copy:return "doc.on.doc";case .move:return "folder";case .copyPath:return "link";case .terminal:return "terminal" } }
 }

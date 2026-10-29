@@ -86,6 +86,7 @@ struct WelcomeView:View {
     }
     private var actionItems: [WheelItem] {
         [WheelItem(title: "AIRDROP", symbol: "dot.radiowaves.left.and.right"),
+         WheelItem(title: "LOCALSEND", symbol: "paperplane"),
          WheelItem(title: "FLOAT", symbol: "rectangle.on.rectangle"),
          WheelItem(title: "COPY", symbol: "doc.on.doc"),
          WheelItem(title: "MOVE", symbol: "folder"),
