@@ -25,7 +25,7 @@ struct WheelSettingsView:View {
     var body:some View {
         ScrollView { VStack(alignment:.leading,spacing:18) {
             NashiPageHeading(eyebrow:"Wheels",title:"Only what you need.",subtitle:"Hide what you never use. The wheels share the space among the rest.").padding(.bottom,4)
-            Picker("Wheels",selection:$mode) { ForEach(WheelMode.allCases,id:\.self) { mode in Text(verbatim:AppLocalization.text(mode.rawValue.capitalized,language:language)).tag(mode) } }.labelsHidden().pickerStyle(.segmented).frame(width:300)
+            Picker("Wheels",selection:$mode) { ForEach(WheelMode.allCases,id:\.self) { mode in Text(verbatim:AppLocalization.text(mode.rawValue.capitalized,language:language)).tag(mode) } }.labelsHidden().pickerStyle(.segmented).fixedSize()
             HStack(alignment:.top,spacing:20) {
                 VStack(alignment:.leading,spacing:14) {
                     ForEach(groups,id:\.0) { group in VStack(alignment:.leading,spacing:6) {
@@ -39,7 +39,7 @@ struct WheelSettingsView:View {
                     if mode == .convert { samplePicker(WheelCustomization.convertSamples,$convertSample) }
                     if mode == .tools { samplePicker(WheelCustomization.toolSamples,$toolSample) }
                     WheelPreview(mode:mode,items:WheelItem.fileItems(mode:mode,inputs:sample?.inputs ?? [],hidden:hiddenHere),backdrop:true)
-                        .id(fanTheme).frame(width:260,height:260).allowsHitTesting(false).accessibilityHidden(true)
+                        .id(fanTheme).frame(width:260,height:260).clipShape(Circle()).allowsHitTesting(false).accessibilityHidden(true)
                     LText("\(visibleCount) of \(total) visible").font(.caption).monospacedDigit().foregroundStyle(.secondary)
                     Button { save([]) } label:{ LText("Show all") }.disabled(hiddenHere.isEmpty)
                 }.frame(width:260)
