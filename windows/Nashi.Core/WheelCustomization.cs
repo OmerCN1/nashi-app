@@ -17,6 +17,10 @@ public static class WheelCustomization
     public static readonly WheelSample[] ConvertSamples=[WheelSample.Of("png"),WheelSample.Of("mp3"),WheelSample.Of("mp4"),WheelSample.Of("gif"),WheelSample.Of("docx"),WheelSample.Of("pdf"),WheelSample.Of("xlsx"),WheelSample.Of("srt"),WheelSample.Of("vtt"),WheelSample.Of("zip"),WheelSample.Of("tar")];
     public static readonly WheelSample[] ToolSamples=[WheelSample.Of("png"),WheelSample.Of("mp3"),WheelSample.Of("mp4"),WheelSample.Of("pdf"),WheelSample.Of("zip"),WheelSample.Of("png","png"),WheelSample.Of("mp4","mp4"),WheelSample.Of("pdf","pdf")];
     public static readonly string[] Actions=["share","float","copy","move","copyPath","terminal"];
+    // The Windows editors open three tools under older ids; Settings always stores the catalog id.
+    private static readonly Dictionary<string,string> EditorIds=new(){["cropImage"]="crop",["annotateImage"]="annotate",["mergePDF"]="mergePDFs"};
+    public static string EditorToolId(string tool)=>EditorIds.GetValueOrDefault(tool,tool);
+    public static string ToolId(string choice)=>EditorIds.FirstOrDefault(pair=>pair.Value==choice).Key??choice;
     /// <summary>Drops hidden ids and keeps order. keepOne returns everything instead of an empty wheel.</summary>
     public static IReadOnlyList<T> Visible<T>(IReadOnlyList<T> items,IReadOnlySet<string> hidden,Func<T,string> id,bool keepOne=false){var shown=items.Where(item=>!hidden.Contains(id(item))).ToArray();return keepOne&&shown.Length==0?items:shown;}
     public static WheelSample? FirstConvertSample(string format)=>ConvertSamples.FirstOrDefault(s=>FeatureCatalog.Formats(s.Inputs).Contains(format));

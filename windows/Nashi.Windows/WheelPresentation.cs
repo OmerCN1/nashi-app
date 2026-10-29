@@ -34,7 +34,7 @@ internal static class WheelPresentation
     internal static IReadOnlyList<ToolChoice> Visible(string mode,IReadOnlyList<ToolChoice> choices,Preferences? preferences=null)
     {
         var p=preferences??Preferences;
-        return mode switch{"convert"=>WheelCustomization.Visible(choices,p.HiddenWheelFormats.ToHashSet(),c=>c.Id.StartsWith("convert:")?c.Id["convert:".Length..]:c.Id),"actions"=>WheelCustomization.Visible(choices,p.HiddenWheelActions.ToHashSet(),c=>c.Id,keepOne:true),_=>WheelCustomization.Visible(choices,p.HiddenWheelTools.ToHashSet(),c=>c.Id)};
+        return mode switch{"convert"=>WheelCustomization.Visible(choices,p.HiddenWheelFormats.ToHashSet(),c=>c.Id.StartsWith("convert:")?c.Id["convert:".Length..]:c.Id),"actions"=>WheelCustomization.Visible(choices,p.HiddenWheelActions.ToHashSet(),c=>c.Id,keepOne:true),_=>WheelCustomization.Visible(choices,p.HiddenWheelTools.ToHashSet(),c=>WheelCustomization.ToolId(c.Id))};
     }
     /// Draws a wheel the way the drag wheel shows it; Settings › Wheels previews with the same code.
     internal static void Draw(Canvas canvas,IReadOnlyList<ToolChoice> tools,string centerText,bool centerVisible)

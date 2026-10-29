@@ -210,7 +210,7 @@ public sealed partial class MainWindow:Window
     private bool Audio=>All(["mp3","m4a","wav","flac","ogg","opus","aiff","aif","wma","aac"]);
     private IReadOnlyList<ToolChoice> Choices()
     {
-        return FeatureCatalog.Tools(files).Select(id=>new ToolChoice(id switch{"cropImage"=>"crop","annotateImage"=>"annotate","mergePDF"=>"mergePDFs",_=>id},FeatureCatalog.ToolNames[id],ToolSymbol(id))).ToArray();
+        return FeatureCatalog.Tools(files).Select(id=>new ToolChoice(WheelCustomization.EditorToolId(id),FeatureCatalog.ToolNames[id],ToolSymbol(id))).ToArray();
     }
     private void Refresh()
     {

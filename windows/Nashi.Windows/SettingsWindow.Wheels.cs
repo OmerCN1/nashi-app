@@ -1,6 +1,5 @@
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using Nashi.Core;
 namespace Nashi.Windows;
@@ -26,7 +25,7 @@ public sealed partial class SettingsWindow
     {
         page.Children.Clear();Heading("Only what you need.","Hide what you never use. The wheels share the space among the rest.");
         var tabs=new StackPanel{Orientation=Orientation.Horizontal,Margin=new(0,0,0,16)};
-        foreach(var (mode,title) in new[]{("convert","Convert"),("tools","Tools"),("actions","File actions")}){var tab=L10n.Content(new ToggleButton{Content=title,IsChecked=mode==wheelMode,Padding=new(14,6,14,6),Margin=new(0,0,6,0),FontWeight=mode==wheelMode?FontWeights.SemiBold:FontWeights.Normal});tab.Click+=(_,_)=>{wheelMode=mode;WheelSettings();};tabs.Children.Add(tab);}
+        foreach(var (mode,title) in new[]{("convert","Convert"),("tools","Tools"),("actions","File actions")}){var tab=L10n.Content(new Button{Content=title,Padding=new(14,6,14,6),Margin=new(0,0,6,0),Background=Theme.Brush(mode==wheelMode?"Sage":"Inset"),FontWeight=mode==wheelMode?FontWeights.SemiBold:FontWeights.Normal});tab.Click+=(_,_)=>{wheelMode=mode;WheelSettings();};tabs.Children.Add(tab);}
         page.Children.Add(tabs);
         var hidden=HiddenWheel(wheelMode).ToHashSet();var groups=WheelGroups();var all=groups.SelectMany(g=>g.Items).ToArray();var visible=all.Count(item=>!hidden.Contains(item.Id));var lastAction=wheelMode=="actions"&&visible==1;
         var grid=new Grid();grid.ColumnDefinitions.Add(new ColumnDefinition());grid.ColumnDefinitions.Add(new ColumnDefinition{Width=new(280)});
@@ -38,7 +37,7 @@ public sealed partial class SettingsWindow
             foreach(var (id,title) in items)
             {
                 var shown=!hidden.Contains(id);var text=new TextBlock{Text=L10n.Text(title),TextDecorations=shown?null:TextDecorations.Strikethrough};
-                var chip=new ToggleButton{Content=text,IsChecked=shown,IsEnabled=!(shown&&lastAction),Padding=new(10,4,10,4),Margin=new(0,0,6,6),Background=Theme.Brush(shown?"Sage":"Inset"),Foreground=shown?Theme.Brush("Ink"):Theme.Brush("Muted")};
+                var chip=new Button{Content=text,IsEnabled=!(shown&&lastAction),Padding=new(10,4,10,4),Margin=new(0,0,6,6),Background=Theme.Brush(shown?"Sage":"Inset"),Foreground=shown?Theme.Brush("Ink"):Theme.Brush("Muted")};
                 System.Windows.Automation.AutomationProperties.SetName(chip,L10n.Text(title));
                 chip.Click+=(_,_)=>ToggleWheelItem(id,hidden);wrap.Children.Add(chip);
             }
@@ -52,8 +51,9 @@ public sealed partial class SettingsWindow
         {
             var samples=wheelMode=="convert"?WheelCustomization.ConvertSamples:WheelCustomization.ToolSamples;
             var row=new StackPanel{Orientation=Orientation.Horizontal,Margin=new(0,0,0,8)};row.Children.Add(L10n.Label(new TextBlock{Text="Preview with",VerticalAlignment=VerticalAlignment.Center,Margin=new(0,0,8,0)}));
-            var picker=new ComboBox{ItemsSource=samples,DisplayMemberPath=nameof(WheelSample.Title),SelectedItem=wheelMode=="convert"?convertSample:toolSample,MinWidth=110};
-            picker.SelectionChanged+=(_,_)=>{if(picker.SelectedItem is not WheelSample sample)return;if(wheelMode=="convert")convertSample=sample;else toolSample=sample;WheelSettings();};
+            // String items, like every other picker here: the app-wide ComboBox template only renders text.
+            var picker=new ComboBox{ItemsSource=samples.Select(s=>s.Title).ToArray(),SelectedIndex=Array.IndexOf(samples,wheelMode=="convert"?convertSample:toolSample),MinWidth=110};
+            picker.SelectionChanged+=(_,_)=>{if(picker.SelectedIndex<0)return;if(wheelMode=="convert")convertSample=samples[picker.SelectedIndex];else toolSample=samples[picker.SelectedIndex];WheelSettings();};
             row.Children.Add(picker);side.Children.Add(row);
         }
         var choices=WheelPreviewChoices();var canvas=new Canvas{Width=540,Height=540};

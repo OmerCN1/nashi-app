@@ -17,6 +17,8 @@ internal static class WheelCustomizationChecks
         check(WheelCustomization.FirstConvertSample("jpg")?.Id=="png"&&WheelCustomization.FirstConvertSample("html")?.Id=="docx"&&WheelCustomization.FirstConvertSample("nope") is null,"Preview must switch to a sample showing the format");
         check(WheelCustomization.FirstToolSample("mergePDF")?.Id=="pdf+pdf"&&WheelCustomization.FirstToolSample("extractArchive")?.Id=="zip","Preview must switch to a sample showing the tool");
         check(WheelCustomization.ToolSamples.First(s=>s.Id=="png+png").Title=="2 × PNG"&&WheelCustomization.ConvertSamples[0].Title=="PNG","Wheel sample titles changed");
+        check(WheelCustomization.ToolId("crop")=="cropImage"&&WheelCustomization.ToolId("annotate")=="annotateImage"&&WheelCustomization.ToolId("mergePDFs")=="mergePDF"&&WheelCustomization.ToolId("compress")=="compress","In-app wheel tool ids must map back to the catalog ids Settings stores");
+        check(FeatureCatalog.ToolNames.Keys.All(id=>WheelCustomization.ToolId(WheelCustomization.EditorToolId(id))==id),"Every renamed in-app tool id must map back to its catalog id");
         check(WheelCustomization.Actions.SequenceEqual(Ids("share","float","copy","move","copyPath","terminal")),"Windows file actions changed");
         foreach(var source in new[]{"Wheels","Only what you need.","Hide what you never use. The wheels share the space among the rest.","Click an item to hide or show it.","Preview with","At least one action stays visible.","Show all"})check(AppLocalization.Text(source,"tr")!=source,"Wheel settings copy is not translated: "+source);
         check(AppLocalization.Text("4 of 6 visible","tr")=="6 öğeden 4 tanesi görünüyor","Wheel settings counter is not translated");
