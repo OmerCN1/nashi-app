@@ -1357,6 +1357,8 @@
 "Open link" = "Ouvrir le lien";
 "Open permission settings…" = "Ouvrir les réglages d’autorisation…";
 "Open wheel" = "Ouvrir la roue";
+"Opens with %@ while dragging files." = "S’ouvre avec %@ pendant le glissement de fichiers.";
+"Opens with %lld while dragging files." = "S’ouvre avec %lld pendant le glissement de fichiers.";
 "Optional. You can change this in Settings." = "Facultatif. Vous pouvez le modifier dans les Réglages.";
 "Organize PDF" = "Organiser un PDF";
 "Original" = "Original";

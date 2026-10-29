@@ -1136,5 +1136,6 @@
   "Preview with": "Aperçu avec",
   "{0} of {1} visible": "{0} sur {1} visibles",
   "At least one action stays visible.": "Au moins une action reste visible.",
-  "Show all": "Tout afficher"
+  "Show all": "Tout afficher",
+  "Opens with {0} while dragging files.": "S’ouvre avec {0} pendant le glissement de fichiers."
 }

@@ -1357,6 +1357,8 @@
 "Open link" = "Bağlantıyı aç";
 "Open permission settings…" = "İzin ayarlarını aç…";
 "Open wheel" = "Çarkı aç";
+"Opens with %@ while dragging files." = "Dosya sürüklerken %@ ile açılır.";
+"Opens with %lld while dragging files." = "Dosya sürüklerken %lld ile açılır.";
 "Optional. You can change this in Settings." = "İsteğe bağlı. Ayarlardan değiştirebilirsin.";
 "Organize PDF" = "PDF'yi Düzenle";
 "Original" = "Orijinal";

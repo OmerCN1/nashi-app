@@ -22,6 +22,7 @@ internal static class WheelCustomizationChecks
         check(WheelCustomization.Actions.SequenceEqual(Ids("share","float","copy","move","copyPath","terminal")),"Windows file actions changed");
         foreach(var source in new[]{"Wheels","Only what you need.","Hide what you never use. The wheels share the space among the rest.","Click an item to hide or show it.","Preview with","At least one action stays visible.","Show all"})check(AppLocalization.Text(source,"tr")!=source,"Wheel settings copy is not translated: "+source);
         check(AppLocalization.Text("4 of 6 visible","tr")=="6 öğeden 4 tanesi görünüyor","Wheel settings counter is not translated");
+        check(AppLocalization.Text("Opens with Ctrl+Shift while dragging files.","tr")=="Dosya sürüklerken Ctrl+Shift ile açılır.","Wheel shortcut hint is not translated");
         var directory=Path.Combine(root,"Wheel preferences");Directory.CreateDirectory(directory);
         try
         {

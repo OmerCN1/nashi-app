@@ -22,10 +22,12 @@ struct WheelSettingsView:View {
     private var total:Int { groups.reduce(0){$0+$1.1.count} }
     private var visibleCount:Int { groups.flatMap(\.1).filter{!hiddenHere.contains($0.id)}.count }
     private var lastAction:Bool { mode == .actions && visibleCount == 1 }
+    private func chord(_ mode:WheelMode)->ModifierChord { ModifierPreferences.chord(for:mode == .convert ? .conversions:mode == .tools ? .tools:.actions) }
     var body:some View {
         ScrollView { VStack(alignment:.leading,spacing:18) {
             NashiPageHeading(eyebrow:"Wheels",title:"Only what you need.",subtitle:"Hide what you never use. The wheels share the space among the rest.").padding(.bottom,4)
-            Picker("Wheels",selection:$mode) { ForEach(WheelMode.allCases,id:\.self) { mode in Text(verbatim:AppLocalization.text(mode.rawValue.capitalized,language:language)).tag(mode) } }.labelsHidden().pickerStyle(.segmented).fixedSize()
+            Picker("Wheels",selection:$mode) { ForEach(WheelMode.allCases,id:\.self) { mode in Text(verbatim:"\(AppLocalization.text(mode.rawValue.capitalized,language:language))  \(chord(mode).symbols)").tag(mode) } }.labelsHidden().pickerStyle(.segmented).fixedSize()
+            LText("Opens with \(chord(mode).symbols) \(chord(mode).title) while dragging files.").font(.caption).foregroundStyle(.secondary).padding(.top,-8)
             HStack(alignment:.top,spacing:20) {
                 VStack(alignment:.leading,spacing:14) {
                     ForEach(groups,id:\.0) { group in VStack(alignment:.leading,spacing:6) {

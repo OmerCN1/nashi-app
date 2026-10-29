@@ -7,6 +7,7 @@ namespace Nashi.Windows;
 public sealed partial class SettingsWindow
 {
     private string wheelMode="convert";private WheelSample convertSample=WheelCustomization.ConvertSamples[0],toolSample=WheelCustomization.ToolSamples[0];
+    private string WheelModifier(string mode)=>mode=="convert"?store.Value.ConvertModifier:mode=="tools"?store.Value.ToolsModifier:store.Value.ActionsModifier;
     private string[] HiddenWheel(string mode)=>mode=="convert"?store.Value.HiddenWheelFormats:mode=="tools"?store.Value.HiddenWheelTools:store.Value.HiddenWheelActions;
     private void SaveHiddenWheel(string mode,IEnumerable<string> ids){var list=ids.Distinct().Order().ToArray();Save(mode=="convert"?store.Value with{HiddenWheelFormats=list}:mode=="tools"?store.Value with{HiddenWheelTools=list}:store.Value with{HiddenWheelActions=list});}
     private (string Group,(string Id,string Title)[] Items)[] WheelGroups()=>wheelMode switch
@@ -25,8 +26,8 @@ public sealed partial class SettingsWindow
     {
         page.Children.Clear();Heading("Only what you need.","Hide what you never use. The wheels share the space among the rest.");
         var tabs=new StackPanel{Orientation=Orientation.Horizontal,Margin=new(0,0,0,16)};
-        foreach(var (mode,title) in new[]{("convert","Convert"),("tools","Tools"),("actions","File actions")}){var tab=L10n.Content(new Button{Content=title,Padding=new(14,6,14,6),Margin=new(0,0,6,0),Background=Theme.Brush(mode==wheelMode?"Sage":"Inset"),FontWeight=mode==wheelMode?FontWeights.SemiBold:FontWeights.Normal});tab.Click+=(_,_)=>{wheelMode=mode;WheelSettings();};tabs.Children.Add(tab);}
-        page.Children.Add(tabs);
+        foreach(var (mode,title) in new[]{("convert","Convert"),("tools","Tools"),("actions","File actions")}){var tab=new Button{Content=L10n.Text(title)+"  ·  "+WheelModifier(mode),Padding=new(14,6,14,6),Margin=new(0,0,6,0),Background=Theme.Brush(mode==wheelMode?"Sage":"Inset"),FontWeight=mode==wheelMode?FontWeights.SemiBold:FontWeights.Normal};tab.Click+=(_,_)=>{wheelMode=mode;WheelSettings();};tabs.Children.Add(tab);}
+        page.Children.Add(tabs);page.Children.Add(new TextBlock{Text=L10n.Text($"Opens with {WheelModifier(wheelMode)} while dragging files."),FontSize=12,Foreground=Theme.Brush("Muted"),Margin=new(2,-8,0,14)});
         var hidden=HiddenWheel(wheelMode).ToHashSet();var groups=WheelGroups();var all=groups.SelectMany(g=>g.Items).ToArray();var visible=all.Count(item=>!hidden.Contains(item.Id));var lastAction=wheelMode=="actions"&&visible==1;
         var grid=new Grid();grid.ColumnDefinitions.Add(new ColumnDefinition());grid.ColumnDefinitions.Add(new ColumnDefinition{Width=new(280)});
         var chips=new StackPanel{Margin=new(0,0,20,0)};

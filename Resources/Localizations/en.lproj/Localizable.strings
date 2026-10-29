@@ -1357,6 +1357,8 @@
 "Open link" = "Open link";
 "Open permission settings…" = "Open permission settings…";
 "Open wheel" = "Open wheel";
+"Opens with %@ while dragging files." = "Opens with %@ while dragging files.";
+"Opens with %lld while dragging files." = "Opens with %lld while dragging files.";
 "Optional. You can change this in Settings." = "Optional. You can change this in Settings.";
 "Organize PDF" = "Organize PDF";
 "Original" = "Original";
